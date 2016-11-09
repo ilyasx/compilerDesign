@@ -20,6 +20,7 @@ public class lexicalAnlyzerController {
         lexicalAnalyzerView  laView = new lexicalAnalyzerView();
         lexicalAnalyzerModel laModel = new lexicalAnalyzerModel();
         laModel.sourceCodeReader(laView.readSourceCodeFil());
+        laModel.print();
         
     }
 }

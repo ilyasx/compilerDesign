@@ -13,7 +13,8 @@ import java.util.*;
  */
 public class lexicalAnalyzerView {
    public String readSourceCodeFil(){
-        String fileName = "data/sourceCode";
+        String fileName = "sourceCode.txt";
+        //System.out.println(fileName);
         //String path = "/data/";
         
         //System.out.println("Enter file name??");
