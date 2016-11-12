@@ -6,8 +6,11 @@
 package Controller;
 
 import Model.lexicalAnalyzerModel;
+
 import View.lexicalAnalyzerView;
 import java.io.FileNotFoundException;
+import Model.*;
+
 
 
 /**
@@ -20,7 +23,41 @@ public class lexicalAnlyzerController {
         lexicalAnalyzerView  laView = new lexicalAnalyzerView();
         lexicalAnalyzerModel laModel = new lexicalAnalyzerModel();
         laModel.sourceCodeReader(laView.readSourceCodeFil());
-        laModel.print();
         
-    }
+        
+        
+        Tokenizer tokenizer = new Tokenizer();
+        tokenizer.add("int|float|for|do|while|if|else|return|main|#include<iostream>|cout|endl", 1);
+        tokenizer.add("\\(", 2);
+        tokenizer.add("\\)", 3);
+        tokenizer.add("\\+|-|=", 4);
+        tokenizer.add("\\*|/", 5);
+        tokenizer.add("[0-9]+",6);
+        tokenizer.add("[a-zA-Z][a-zA-Z0-9_]*", 7);
+        tokenizer.add(";",8);
+        tokenizer.add("\\}",9);
+        tokenizer.add("\\{",10);
+        tokenizer.add("\\//|/*|\\*/",11);
+        tokenizer.add("\\<<", 0);
+        
+
+
+
+        try
+        {
+          tokenizer.tokenize(laModel.print());
+
+          for (Tokenizer.Token tok : tokenizer.getTokens())
+          {
+            System.out.println("" + tok.token + " " + tok.sequence);
+          }
+        }
+        catch (Model.ParserException e)
+        {
+          System.out.println(e.getMessage());
+        }
+
+      }
 }
+
+        
