@@ -27,18 +27,29 @@ public class lexicalAnlyzerController {
         
         
         Tokenizer tokenizer = new Tokenizer();
+        //keywords
         tokenizer.add("int|float|for|do|while|if|else|return|main|#include<iostream>|cout|endl", 1);
+        //brekets open
         tokenizer.add("\\(", 2);
+        //brekets close
         tokenizer.add("\\)", 3);
-        tokenizer.add("\\+|-|=", 4);
-        tokenizer.add("\\*|/", 5);
+        //mathematical
+        tokenizer.add("\\+|-", 4);
+        //digits
         tokenizer.add("[0-9]+",6);
+        //variables
         tokenizer.add("[a-zA-Z][a-zA-Z0-9_]*", 7);
+        //semi
         tokenizer.add(";",8);
+        //brekets close
         tokenizer.add("\\}",9);
+        //breakets open
         tokenizer.add("\\{",10);
+        //comments
         tokenizer.add("\\//|/*|\\*/",11);
-        tokenizer.add("\\<<", 0);
+        //count << sign
+        tokenizer.add("\\<<", 12);
+        //tokenizer.add("==|!|",13);
         
 
 
